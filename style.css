@@ -1,0 +1,92 @@
+/* Import a nice, clean font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #23242a; /* Dark background */
+    font-family: 'Poppins', sans-serif;
+}
+
+.calculator {
+    position: relative;
+    background: #2e2f34; /* Slightly lighter calculator body */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.25),
+                -15px -15px 20px rgba(255, 255, 255, 0.05);
+    width: 340px;
+}
+
+.display {
+    margin-bottom: 20px;
+}
+
+/* Styling for the calculator screen */
+.display input {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    font-size: 2.5em;
+    font-weight: 500;
+    text-align: right;
+    border: none;
+    background-color: #3a3b40; /* Darker screen background */
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.25),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.05);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px; /* Creates space between buttons */
+}
+
+button {
+    height: 65px;
+    font-size: 1.5em;
+    font-weight: 400;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background: #333439; /* Button color */
+    color: #fff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25),
+                -5px -5px 10px rgba(255, 255, 255, 0.05);
+    transition: transform 0.1s; /* Smooth transition for clicks */
+}
+
+/* Provides visual feedback when a button is pressed */
+button:active {
+    transform: scale(0.95);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25),
+                -1px -1px 5px rgba(255, 255, 255, 0.05);
+}
+
+/* -- Special Button Colors for Visual Hierarchy -- */
+
+/* Clear button (C) */
+button[onclick="clearScreen()"] {
+    background-color: #d14141; /* Reddish color for danger/clear */
+    font-weight: 500;
+}
+
+/* Operator buttons (+, -, *, /) */
+button[onclick*="display('/')"],
+button[onclick*="display('*')"],
+button[onclick*="display('-')"],
+button[onclick*="display('+')"] {
+    background-color: #2196f3; /* Blue for operators */
+    font-weight: 500;
+}
+
+/* Equals button */
+.equal {
+    grid-column: span 2; /* Makes the equals button wider */
+    background-color: #2ecc71; /* Green for go/calculate */
+    font-weight: 500;
+}
